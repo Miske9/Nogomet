@@ -1,0 +1,158 @@
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"> <!-- Bijela pozadina -->
+
+    <!-- Stupci -->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000">
+
+        <!-- Stupac 1: poz -->
+        <TextView
+            android:text="poz"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
+
+        <!-- Stupac 2: Naziv -->
+        <TextView
+            android:text="Naziv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
+
+        <!-- Stupac 3: OS -->
+        <TextView
+            android:text="OS"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
+
+        <!-- Stupac 4: Pob -->
+        <TextView
+            android:text="Pob"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
+
+        <!-- Stupac 5: Ner -->
+        <TextView
+            android:text="Ner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
+
+        <!-- Stupac 6: Izg -->
+        <TextView
+            android:text="Izg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
+
+        <!-- Stupac 7: Bodovi -->
+        <TextView
+            android:text="Bodovi"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
+    </TableRow>
+
+    <!-- Redovi -->
+
+    <!-- Red 1 -->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"> <!-- Crveni obrubi -->
+
+        <!-- Stupac 1: poz -->
+        <TextView
+            android:text="1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"/> <!-- Crvena boja teksta -->
+
+        <!-- Stupac 2: Naziv -->
+        <TextView
+            android:text="Smoljanci Sloboda"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"/> <!-- Crvena boja teksta -->
+
+        <!-- Stupac 3: OS -->
+        <TextView
+            android:text="10"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"/> <!-- Crvena boja teksta -->
+
+        <!-- Stupac 4: Pob -->
+        <TextView
+            android:text="8"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"/> <!-- Crvena boja teksta -->
+
+        <!-- Stupac 5: Ner -->
+        <TextView
+            android:text="0"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"/> <!-- Crvena boja teksta -->
+
+        <!-- Stupac 6: Izg -->
+        <TextView
+            android:text="2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"/> <!-- Crvena boja teksta -->
+
+        <!-- Stupac 7: Bodovi -->
+        <TextView
+            android:text="24"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FF0000"/> <!-- Crvena boja teksta -->
+    </TableRow>
+
+    <!-- Ovdje dodajte ostale redove -->
+
+</TableLayout>

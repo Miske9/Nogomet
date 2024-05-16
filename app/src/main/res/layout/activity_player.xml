@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editIme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ime"
+        android:inputType="text"
+        android:minWidth="200dp"
+        android:minHeight="48dp"/>
+
+    <EditText
+        android:id="@+id/editPrezime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prezime"
+        android:inputType="text"
+        android:minWidth="200dp"
+        android:minHeight="48dp"/>
+
+    <EditText
+        android:id="@+id/editGodine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Godine"
+        android:inputType="number"
+        android:minWidth="200dp"
+        android:minHeight="48dp"/>
+
+    <EditText
+        android:id="@+id/editPozicija"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pozicija"
+        android:inputType="text"
+        android:minWidth="200dp"
+        android:minHeight="48dp"/>
+
+    <Button
+        android:id="@+id/btnSpremi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Spremi"/>
+
+    <Button
+        android:id="@+id/btnPrikaziIgrace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Prikaži igrače" />
+
+
+</LinearLayout>
