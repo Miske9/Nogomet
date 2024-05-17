@@ -13,9 +13,6 @@
         android:theme="@style/Theme.Nogometni_klub"
         tools:targetApi="31">
         <activity
-            android:name=".PlayerListActivity"
-            android:exported="false" />
-        <activity
             android:name=".AboutActivity"
             android:exported="false" />
         <activity
