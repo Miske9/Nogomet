@@ -1,63 +1,133 @@
 package hr.uniri.nogometni_klub;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class PlayerActivity extends AppCompatActivity {
 
-    private EditText editIme, editPrezime, editGodine, editPozicija;
+    RecyclerView recyclerView;
+    FloatingActionButton add_button;
+    ImageView empty_imageview;
+    TextView no_data;
 
-    private AppDatabase appDatabase;
+    AppDatabase appDatabase;
+    ArrayList<String> player_ID, ime_igraca, prezime_igraca, godine_igraca, pozicija_igraca;
+    CustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
-        editIme = findViewById(R.id.editIme);
-        editPrezime = findViewById(R.id.editPrezime);
-        editGodine = findViewById(R.id.editGodine);
-        editPozicija = findViewById(R.id.editPozicija);
-
-        Button btnSpremi = findViewById(R.id.btnSpremi);
-
-        // Inicijalizacija baze podataka
-        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-database")
-                .allowMainThreadQueries() // Ovo je privremeno, koristite AsyncTask ili druge metode za rad na pozadini
-                .build();
-
-        btnSpremi.setOnClickListener(v -> {
-            String ime = editIme.getText().toString();
-            String prezime = editPrezime.getText().toString();
-            String godineStr = editGodine.getText().toString();
-            String pozicija = editPozicija.getText().toString();
-
-            if (ime.isEmpty() || prezime.isEmpty() || godineStr.isEmpty() || pozicija.isEmpty()) {
-                Toast.makeText(PlayerActivity.this, "Molimo vas da popunite sva polja", Toast.LENGTH_SHORT).show();
-                return;
+        recyclerView = findViewById(R.id.recyclerView);
+        add_button = findViewById(R.id.add_button);
+        empty_imageview = findViewById(R.id.empty_imageview);
+        no_data = findViewById(R.id.no_data);
+        add_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlayerActivity.this, PlayerListActivity.class);
+                startActivityForResult(intent, 1);
             }
-
-            int godine = Integer.parseInt(godineStr);
-
-            // Stvaranje novog igrača
-            Player player = new Player(ime, prezime, godine, pozicija);
-
-            // Spremanje igrača u bazu podataka
-            appDatabase.playerDao().insert(player);
-
-            Toast.makeText(PlayerActivity.this, "Igrač spremljen u bazu podataka", Toast.LENGTH_SHORT).show();
-
-            // Nakon spremanja možete očistiti unesene podatke iz EditText polja
-            editIme.setText("");
-            editPrezime.setText("");
-            editGodine.setText("");
-            editPozicija.setText("");
         });
+
+        appDatabase = new AppDatabase(PlayerActivity.this);
+        player_ID = new ArrayList<>();
+        ime_igraca = new ArrayList<>();
+        prezime_igraca = new ArrayList<>();
+        godine_igraca = new ArrayList<>();
+        pozicija_igraca = new ArrayList<>();
+
+        storeDataInArrays();
+
+        customAdapter = new CustomAdapter(PlayerActivity.this,this, player_ID, ime_igraca, prezime_igraca, godine_igraca, pozicija_igraca);
+        recyclerView.setAdapter(customAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(PlayerActivity.this));
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            recreate();
+        }
+    }
+
+    void storeDataInArrays(){
+        Cursor cursor = appDatabase.readAllData();
+        if(cursor.getCount() == 0){
+            empty_imageview.setVisibility(View.VISIBLE);
+            no_data.setVisibility(View.VISIBLE);
+        }else{
+            while (cursor.moveToNext()){
+                player_ID.add(cursor.getString(0));
+                ime_igraca.add(cursor.getString(1));
+                prezime_igraca.add(cursor.getString(2));
+                godine_igraca.add(cursor.getString(3));
+                pozicija_igraca.add(cursor.getString(4));
+            }
+            empty_imageview.setVisibility(View.GONE);
+            no_data.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.nav_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.delete_all){
+            confirmDialog();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete All?");
+        builder.setMessage("Are you sure you want to delete all Data?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                AppDatabase appDatabase = new AppDatabase(PlayerActivity.this);
+                appDatabase.deleteAllData();
+                //Refresh Activity
+                Intent intent = new Intent(PlayerActivity.this, PlayerActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
     }
 }
-
-

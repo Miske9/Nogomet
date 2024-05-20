@@ -1,45 +1,42 @@
-/*package hr.uniri.nogometni_klub;
-import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+package hr.uniri.nogometni_klub;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import hr.uniri.nogometni_klub.AppDatabase;
-import hr.uniri.nogometni_klub.Player;
 import hr.uniri.nogometni_klub.R;
 
 public class PlayerListActivity extends AppCompatActivity {
 
-    private ListView listViewPlayers;
-    private AppDatabase appDatabase;
+    EditText editIme, editPrezime, editGodine, editPozicija;
+    Button btnSpremi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_list);
 
-        listViewPlayers = findViewById(R.id.listViewPlayers);
+        editIme = findViewById(R.id.editIme);
+        editPrezime = findViewById(R.id.editPrezime);
+        editGodine = findViewById(R.id.editGodine);
+        editPozicija = findViewById(R.id.editPozicija);
+        btnSpremi = findViewById(R.id.btnSpremi);
+        btnSpremi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppDatabase appDatabase = new AppDatabase(PlayerListActivity.this);
+                appDatabase.addPlayer(
+                        editIme.getText().toString().trim(),
+                        editPrezime.getText().toString().trim(),
+                        Integer.parseInt(editGodine.getText().toString().trim()),
+                        editPozicija.getText().toString().trim()
+                );
+            }
+        });
 
-        // Inicijalizacija baze podataka
-        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-database")
-                .allowMainThreadQueries() // Ovo je privremeno, koristite AsyncTask ili druge metode za rad na pozadini
-                .build();
-
-        // Dohvat igrača iz baze podataka
-        List<Player> players = appDatabase.playerDao().getAllPlayers();
-
-        // Prikaz igrača u ListView-u
-        List<String> playerNames = new ArrayList<>();
-        for (Player player : players) {
-            playerNames.add(player.getIme() + " " + player.getPrezime());
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
-        listViewPlayers.setAdapter(adapter);
     }
-}*/
+}

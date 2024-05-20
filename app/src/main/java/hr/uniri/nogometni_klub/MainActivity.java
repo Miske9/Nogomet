@@ -15,14 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 public class MainActivity extends AppCompatActivity {
-    private AppDatabase appDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        appDatabase = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "note-db").build();
-        PlayerDao playerDao = appDatabase.playerDao();
 
         // Pronalaženje gumba za igrače
         Button btnIgraci = findViewById(R.id.btnIgraci);

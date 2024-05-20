@@ -1,60 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editIme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ime"
-        android:inputType="text"
-        android:minWidth="200dp"
-        android:minHeight="48dp"/>
-
-    <EditText
-        android:id="@+id/editPrezime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Prezime"
-        android:inputType="text"
-        android:minWidth="200dp"
-        android:minHeight="48dp"/>
-
-    <EditText
-        android:id="@+id/editGodine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Godine"
-        android:inputType="number"
-        android:minWidth="200dp"
-        android:minHeight="48dp"/>
-
-    <EditText
-        android:id="@+id/editPozicija"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Pozicija"
-        android:inputType="text"
-        android:minWidth="200dp"
-        android:minHeight="48dp"/>
-
-    <Button
-        android:id="@+id/btnSpremi"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Spremi"/>
+        android:contentDescription="@string/add_description"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/baseline_add_24" />
 
-    <Button
-        android:id="@+id/btnPrikaziIgrace"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingTop="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/empty_imageview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/empty_imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="Empty Image View"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/no_data" />
+
+    <TextView
+        android:id="@+id/no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Prikaži igrače" />
+        android:text="No Data."
+        android:textSize="20sp"
+        android:alpha="0.4"
+        android:visibility="gone"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/empty_imageview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
