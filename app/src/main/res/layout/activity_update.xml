@@ -8,7 +8,7 @@
     android:padding="30dp">
 
     <EditText
-        android:id="@+id/editIme"
+        android:id="@+id/editIme2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editPrezime"
+        android:id="@+id/editPrezime2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -31,10 +31,10 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editIme" />
+        app:layout_constraintTop_toBottomOf="@+id/editIme2" />
 
     <EditText
-        android:id="@+id/editGodine"
+        android:id="@+id/editGodine2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -44,10 +44,10 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPrezime" />
+        app:layout_constraintTop_toBottomOf="@+id/editPrezime2" />
 
     <EditText
-        android:id="@+id/editPozicija"
+        android:id="@+id/editPozicija2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -57,7 +57,7 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editGodine" />
+        app:layout_constraintTop_toBottomOf="@+id/editGodine2" />
 
     <Button
         android:id="@+id/update_button"
@@ -69,7 +69,7 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPozicija" />
+        app:layout_constraintTop_toBottomOf="@+id/editPozicija2" />
 
     <Button
         android:id="@+id/delete_button"

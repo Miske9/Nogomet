@@ -17,21 +17,17 @@ public class UpdateActivity extends AppCompatActivity {
     EditText editIme, editPrezime, editGodine, editPozicija;
     Button update_button, delete_button;
 
-    String id;
-    String ime;
-    String prezime;
-    String godine;
-    String pozicija;
+    String id, ime, prezime, godine, pozicija;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        editIme = findViewById(R.id.editIme);
-        editPrezime = findViewById(R.id.editPrezime);
-        editGodine = findViewById(R.id.editGodine);
-        editPozicija = findViewById(R.id.editPozicija);
+        editIme = findViewById(R.id.editIme2);
+        editPrezime = findViewById(R.id.editPrezime2);
+        editGodine = findViewById(R.id.editGodine2);
+        editPozicija = findViewById(R.id.editPozicija2);
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
 
@@ -66,14 +62,14 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     void getAndSetIntentData(){
-        if(getIntent().hasExtra("player_ID") && getIntent().hasExtra("ime_igraca") &&
-                getIntent().hasExtra("prezime_igraca") && getIntent().hasExtra("godine_igraca") && getIntent().hasExtra("pozicija_igraca")){
+        if(getIntent().hasExtra("id") && getIntent().hasExtra("ime") &&
+                getIntent().hasExtra("prezime") && getIntent().hasExtra("godine") && getIntent().hasExtra("pozicija")){
             //Getting Data from Intent
-            id = getIntent().getStringExtra("player_ID");
-            ime = getIntent().getStringExtra("ime_igraca");
-            prezime = getIntent().getStringExtra("prezime_igraca");
-            godine = String.valueOf(Integer.parseInt(getIntent().getStringExtra("godine_igraca")));
-            pozicija = getIntent().getStringExtra("pozicija_igraca");
+            id = getIntent().getStringExtra("id");
+            ime = getIntent().getStringExtra("ime");
+            prezime = getIntent().getStringExtra("prezime");
+            godine = String.valueOf(Integer.parseInt(getIntent().getStringExtra("godine")));
+            pozicija = getIntent().getStringExtra("pozicija");
 
             //Setting Intent Data
             editIme.setText(ime);
