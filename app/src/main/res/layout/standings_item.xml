@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:padding="10dp">
 
     <TextView
@@ -13,6 +14,7 @@
         android:text="Rank"
         android:textSize="18sp"
         android:background="@drawable/item_border"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="8dp"
@@ -24,6 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Ime Kluba"
         android:textSize="18sp"
+        android:textColor="@color/black"
         android:background="@drawable/item_border"
         app:layout_constraintEnd_toStartOf="@id/bodovi"
         app:layout_constraintStart_toEndOf="@id/rank"
@@ -35,6 +38,7 @@
         android:layout_height="wrap_content"
         android:text="Bodovi"
         android:textSize="18sp"
+        android:textColor="@color/black"
         android:layout_width="40dp"
         android:background="@drawable/item_border"
         app:layout_constraintEnd_toEndOf="parent"
