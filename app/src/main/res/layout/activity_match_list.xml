@@ -45,7 +45,6 @@
         android:hint="rezultat"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
-        android:inputType="number"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
