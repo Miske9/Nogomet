@@ -32,6 +32,8 @@
             android:exported="false" />
         <activity android:name=".PlayerListActivity"
             android:exported="false" />
+        <activity android:name=".StandingsActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

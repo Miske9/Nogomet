@@ -1,11 +1,25 @@
 package hr.uniri.nogometni_klub;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-@Entity
 public class Standings {
-    @PrimaryKey
-    public int id;
-    public String team;
-    public int points;
+    private int rank;
+    private String imeKluba;
+    private int bodovi;
+
+    public Standings(int rank, String imeKluba, int bodovi) {
+        this.rank = rank;
+        this.imeKluba = imeKluba;
+        this.bodovi = bodovi;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public String getImeKluba() {
+        return imeKluba;
+    }
+
+    public int getBodovi() {
+        return bodovi;
+    }
 }

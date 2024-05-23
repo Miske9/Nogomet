@@ -61,14 +61,12 @@ public class UpdateActivity extends AppCompatActivity {
     void getAndSetIntentData(){
         if(getIntent().hasExtra("id") && getIntent().hasExtra("ime") &&
                 getIntent().hasExtra("prezime") && getIntent().hasExtra("godine") && getIntent().hasExtra("pozicija")){
-            //Getting Data from Intent
             id = getIntent().getStringExtra("id");
             ime = getIntent().getStringExtra("ime");
             prezime = getIntent().getStringExtra("prezime");
             godine = String.valueOf(Integer.parseInt(getIntent().getStringExtra("godine")));
             pozicija = getIntent().getStringExtra("pozicija");
 
-            //Setting Intent Data
             editIme.setText(ime);
             editPrezime.setText(prezime);
             editGodine.setText(godine);
