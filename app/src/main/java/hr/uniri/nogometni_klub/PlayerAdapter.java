@@ -18,13 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
+public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.MyViewHolder> {
 
     private Context context;
     private Activity activity;
     private ArrayList<String> player_ID, ime_igraca, prezime_igraca, godine_igraca, pozicija_igraca;
 
-    public CustomAdapter(Activity activity, Context context, ArrayList<String> player_ID, ArrayList<String> ime_igraca,
+    public PlayerAdapter(Activity activity, Context context, ArrayList<String> player_ID, ArrayList<String> ime_igraca,
                          ArrayList<String> prezime_igraca, ArrayList<String> godine_igraca, ArrayList<String> pozicija_igraca) {
         this.activity = activity;
         this.context = context;

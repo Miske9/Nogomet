@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Pokretanje MatchesActivity-a kada se pritisne gumb za utakmice
-                Intent intent = new Intent(MainActivity.this, MatchesActivity.class);
+                Intent intent = new Intent(MainActivity.this, MatchActivity.class);
                 startActivity(intent);
             }
         });

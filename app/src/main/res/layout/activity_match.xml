@@ -2,10 +2,10 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout_player"
+    android:id="@+id/drawer_layout_match"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayerActivity">
+    tools:context=".MatchActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_player"
+            android:id="@+id/toolbar_match"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -21,14 +21,14 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/player_recyclerView"
+            android:id="@+id/match_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="16dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_player_button"
+            android:id="@+id/add_match_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
@@ -38,7 +38,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageView
-            android:id="@+id/player_empty_imageview"
+            android:id="@+id/match_empty_imageview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
@@ -46,7 +46,7 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/player_no_data"
+            android:id="@+id/match_no_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -57,7 +57,7 @@
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view_player"
+        android:id="@+id/nav_view_match"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

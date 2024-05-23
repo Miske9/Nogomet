@@ -12,14 +12,20 @@ class AppDatabase extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "FootballLibrary.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
-    private static final String TABLE_NAME = "my_library";
-    private static final String COLUMN_ID = "player_ID";
-    private static final String COLUMN_IME = "ime_igraca";
-    private static final String COLUMN_PREZIME = "prezime_igraca";
-    private static final String COLUMN_GODINE = "godine_igraca";
-    private static final String COLUMN_POZICIJA = "pozicija_igraca"; // Promijenjen naziv kolone
+    private static final String PLAYER_TABLE_NAME = "player";
+    private static final String PLAYER_COLUMN_ID = "player_ID";
+    private static final String PLAYER_COLUMN_IME = "ime_igraca";
+    private static final String PLAYER_COLUMN_PREZIME = "prezime_igraca";
+    private static final String PLAYER_COLUMN_GODINE = "godine_igraca";
+    private static final String PLAYER_COLUMN_POZICIJA = "pozicija_igraca";
+
+    private static final String MATCH_TABLE_NAME = "utakmica";
+    private static final String MATCH_COLUMN_ID = "match_ID";
+    private static final String MATCH_COLUMN_DOMACI_KLUB = "domaci_klub";
+    private static final String MATCH_COLUMN_GOST_KLUB = "gost_klub";
+    private static final String MATCH_COLUMN_REZULTAT = "rezultat";
 
     AppDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -28,30 +34,55 @@ class AppDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + TABLE_NAME +
-                " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_IME + " TEXT, " +
-                COLUMN_PREZIME + " TEXT, " +
-                COLUMN_GODINE + " INT, " +
-                COLUMN_POZICIJA + " TEXT);"; // Promijenjen naziv kolone
+        String query = "CREATE TABLE " + PLAYER_TABLE_NAME +
+                " (" + PLAYER_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                PLAYER_COLUMN_IME + " TEXT, " +
+                PLAYER_COLUMN_PREZIME + " TEXT, " +
+                PLAYER_COLUMN_GODINE + " INT, " +
+                PLAYER_COLUMN_POZICIJA + " TEXT);";
+        String matchQuery = "CREATE TABLE " + MATCH_TABLE_NAME +
+                " (" + MATCH_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                MATCH_COLUMN_DOMACI_KLUB + " TEXT, " +
+                MATCH_COLUMN_GOST_KLUB + " TEXT, " +
+                MATCH_COLUMN_REZULTAT + " INT);";
+        db.execSQL(matchQuery);
         db.execSQL(query);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (oldVersion < 2) {
+            String matchQuery = "CREATE TABLE " + MATCH_TABLE_NAME +
+                    " (" + MATCH_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    MATCH_COLUMN_DOMACI_KLUB + " TEXT, " +
+                    MATCH_COLUMN_GOST_KLUB + " TEXT, " +
+                    MATCH_COLUMN_REZULTAT + " INT);";
+            db.execSQL(matchQuery);
+        }
     }
-
     void addPlayer(String ime, String prezime, int godine, String pozicija){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_IME, ime);
-        cv.put(COLUMN_PREZIME, prezime);
-        cv.put(COLUMN_GODINE, godine);
-        cv.put(COLUMN_POZICIJA, pozicija); // Ispravljena kolona
-        long result = db.insert(TABLE_NAME, null, cv);
+        cv.put(PLAYER_COLUMN_IME, ime);
+        cv.put(PLAYER_COLUMN_PREZIME, prezime);
+        cv.put(PLAYER_COLUMN_GODINE, godine);
+        cv.put(PLAYER_COLUMN_POZICIJA, pozicija); // Ispravljena kolona
+        long result = db.insert(PLAYER_TABLE_NAME, null, cv);
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    void addMatch(String domaci_klub, String gost_klub, int rezultat){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(MATCH_COLUMN_DOMACI_KLUB, domaci_klub);
+        cv.put(MATCH_COLUMN_GOST_KLUB, gost_klub);
+        cv.put(MATCH_COLUMN_REZULTAT, rezultat);
+        long result = db.insert(MATCH_TABLE_NAME, null, cv);
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         } else {
@@ -59,8 +90,18 @@ class AppDatabase extends SQLiteOpenHelper {
         }
     }
 
-    Cursor readAllData(){
-        String query = "SELECT * FROM " + TABLE_NAME;
+    Cursor readAllPlayerData(){
+        String query = "SELECT * FROM " + PLAYER_TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+    Cursor readAllMatchData(){
+        String query = "SELECT * FROM " + MATCH_TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
@@ -70,15 +111,29 @@ class AppDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
-    void updateData(String row_id, String ime, String prezime, int godine, String pozicija){
+    void updatePlayerData(String row_id, String ime, String prezime, int godine, String pozicija){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_IME, ime);
-        cv.put(COLUMN_PREZIME, prezime);
-        cv.put(COLUMN_GODINE, godine);
-        cv.put(COLUMN_POZICIJA, pozicija); // Ispravljena kolona
+        cv.put(PLAYER_COLUMN_IME, ime);
+        cv.put(PLAYER_COLUMN_PREZIME, prezime);
+        cv.put(PLAYER_COLUMN_GODINE, godine);
+        cv.put(PLAYER_COLUMN_POZICIJA, pozicija); // Ispravljena kolona
 
-        long result = db.update(TABLE_NAME, cv, COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
+        long result = db.update(PLAYER_TABLE_NAME, cv, PLAYER_COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    void updateMatchData(String row_id, String domaci_klub, String gost_klub, int rezultat){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(MATCH_COLUMN_DOMACI_KLUB, domaci_klub);
+        cv.put(MATCH_COLUMN_GOST_KLUB, gost_klub);
+        cv.put(MATCH_COLUMN_REZULTAT, rezultat);
+
+        long result = db.update(MATCH_TABLE_NAME, cv, MATCH_COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         } else {
@@ -86,9 +141,18 @@ class AppDatabase extends SQLiteOpenHelper {
         }
     }
 
-    void deleteOneRow(String row_id){
+    void deleteOneRowFromPlayer(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(TABLE_NAME, COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
+        long result = db.delete(PLAYER_TABLE_NAME, PLAYER_COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
+        if(result == -1){
+            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+        }
+    }
+    void deleteOneRowFromMatch(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(MATCH_TABLE_NAME, MATCH_COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
         if(result == -1){
             Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
         } else {
@@ -96,8 +160,12 @@ class AppDatabase extends SQLiteOpenHelper {
         }
     }
 
-    void deleteAllData(){
+    void deleteAllPlayerData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME);
+        db.execSQL("DELETE FROM " + PLAYER_TABLE_NAME);
+    }
+    void deleteAllMatchData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + MATCH_TABLE_NAME);
     }
 }

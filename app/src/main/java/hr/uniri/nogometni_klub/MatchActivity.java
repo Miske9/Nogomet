@@ -25,28 +25,28 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class PlayerActivity extends AppCompatActivity {
+public class MatchActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    FloatingActionButton add_button;
-    ImageView empty_imageview;
-    TextView no_data;
+    RecyclerView match_recyclerView;
+    FloatingActionButton add_match_button;
+    ImageView match_empty_imageview;
+    TextView match_no_data;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     AppDatabase appDatabase;
-    ArrayList<String> player_ID, ime_igraca, prezime_igraca, godine_igraca, pozicija_igraca;
-    PlayerAdapter playerAdapter;
+    ArrayList<String> match_ID, domaci_klub, gost_klub, rezultat;
+    MatchAdapter matchAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player);
+        setContentView(R.layout.activity_match);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_player);
+        Toolbar toolbar = findViewById(R.id.toolbar_match);
         setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.drawer_layout_player);
+        drawerLayout = findViewById(R.id.drawer_layout_match);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close
@@ -54,12 +54,12 @@ public class PlayerActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view_player);
+        NavigationView navigationView = findViewById(R.id.nav_view_match);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.nav_home) {
-                    Intent intent = new Intent(PlayerActivity.this, MainActivity.class);
+                    Intent intent = new Intent(MatchActivity.this, MainActivity.class);
                     startActivity(intent);
                     // Handle other navigation items if needed
                 }
@@ -68,30 +68,29 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.player_recyclerView);
-        add_button = findViewById(R.id.add_player_button);
-        empty_imageview = findViewById(R.id.player_empty_imageview);
-        no_data = findViewById(R.id.player_no_data);
-        add_button.setOnClickListener(new View.OnClickListener() {
+        match_recyclerView = findViewById(R.id.match_recyclerView);
+        add_match_button = findViewById(R.id.add_match_button);
+        match_empty_imageview = findViewById(R.id.match_empty_imageview);
+        match_no_data = findViewById(R.id.match_no_data);
+        add_match_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PlayerActivity.this, PlayerListActivity.class);
+                Intent intent = new Intent(MatchActivity.this, MatchListActivity.class);
                 startActivityForResult(intent, 1);
             }
         });
 
-        appDatabase = new AppDatabase(PlayerActivity.this);
-        player_ID = new ArrayList<>();
-        ime_igraca = new ArrayList<>();
-        prezime_igraca = new ArrayList<>();
-        godine_igraca = new ArrayList<>();
-        pozicija_igraca = new ArrayList<>();
+        appDatabase = new AppDatabase(MatchActivity.this);
+        match_ID = new ArrayList<>();
+        domaci_klub = new ArrayList<>();
+        gost_klub = new ArrayList<>();
+        rezultat = new ArrayList<>();
 
         storeDataInArrays();
 
-        playerAdapter = new PlayerAdapter(PlayerActivity.this, this, player_ID, ime_igraca, prezime_igraca, godine_igraca, pozicija_igraca);
-        recyclerView.setAdapter(playerAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(PlayerActivity.this));
+        matchAdapter = new MatchAdapter(MatchActivity.this, this, match_ID, domaci_klub, gost_klub, rezultat);
+        match_recyclerView.setAdapter(matchAdapter);
+        match_recyclerView.setLayoutManager(new LinearLayoutManager(MatchActivity.this));
     }
 
     @Override
@@ -103,20 +102,19 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     void storeDataInArrays() {
-        Cursor cursor = appDatabase.readAllPlayerData();
+        Cursor cursor = appDatabase.readAllMatchData();
         if (cursor.getCount() == 0) {
-            empty_imageview.setVisibility(View.VISIBLE);
-            no_data.setVisibility(View.VISIBLE);
+            match_empty_imageview.setVisibility(View.VISIBLE);
+            match_no_data.setVisibility(View.VISIBLE);
         } else {
             while (cursor.moveToNext()) {
-                player_ID.add(cursor.getString(0));
-                ime_igraca.add(cursor.getString(1));
-                prezime_igraca.add(cursor.getString(2));
-                godine_igraca.add(cursor.getString(3));
-                pozicija_igraca.add(cursor.getString(4));
+                match_ID.add(cursor.getString(0));
+                domaci_klub.add(cursor.getString(1));
+                gost_klub.add(cursor.getString(2));
+                rezultat.add(cursor.getString(3));
             }
-            empty_imageview.setVisibility(View.GONE);
-            no_data.setVisibility(View.GONE);
+            match_empty_imageview.setVisibility(View.GONE);
+            match_no_data.setVisibility(View.GONE);
         }
     }
 
