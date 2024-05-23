@@ -30,10 +30,8 @@ public class UpdateMatchActivity extends AppCompatActivity {
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
 
-        //First we call this
         getAndSetIntentData();
 
-        //Set actionbar title after getAndSetIntentData method
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setTitle(domaci_klub);
@@ -42,7 +40,6 @@ public class UpdateMatchActivity extends AppCompatActivity {
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //And only then we call this
                 AppDatabase appDatabase = new AppDatabase(UpdateMatchActivity.this);
                 domaci_klub = editDomaciKlub.getText().toString().trim();
                 gost_klub= editGostKlub.getText().toString().trim();
@@ -62,7 +59,6 @@ public class UpdateMatchActivity extends AppCompatActivity {
     void getAndSetIntentData(){
         if(getIntent().hasExtra("id") && getIntent().hasExtra("domaci_klub") &&
                 getIntent().hasExtra("gost_klub") && getIntent().hasExtra("rezultat")){
-            //Getting Data from Intent
             id = getIntent().getStringExtra("id");
             domaci_klub= getIntent().getStringExtra("domaci_klub");
             gost_klub = getIntent().getStringExtra("gost_klub");

@@ -52,7 +52,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.MyViewHold
         holder.godine_igraca_txt.setText(godine_igraca.get(position));
         holder.pozicija_igraca_txt.setText(pozicija_igraca.get(position));
 
-        // RecyclerView onClickListener
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +86,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.MyViewHold
             godine_igraca_txt = itemView.findViewById(R.id.godine_igraca_txt);
             pozicija_igraca_txt = itemView.findViewById(R.id.pozicija_igraca_txt);
             mainLayout = itemView.findViewById(R.id.mainLayout);
-            // Animate RecyclerView
             Animation translate_anim = AnimationUtils.loadAnimation(itemView.getContext(), R.anim.translate_anim);
             mainLayout.setAnimation(translate_anim);
         }

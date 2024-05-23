@@ -37,51 +37,42 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                // Handle navigation view item clicks here.
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
         });
 
-        // Pronalaženje gumba za igrače
         Button btnIgraci = findViewById(R.id.btnIgraci);
         btnIgraci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Pokretanje PlayerActivity-a kada se pritisne gumb za igrače
                 Intent intent = new Intent(MainActivity.this, PlayerActivity.class);
                 startActivity(intent);
             }
         });
 
-        // Pronalaženje gumba za utakmice
         Button btnUtakmice = findViewById(R.id.btnUtakmice);
         btnUtakmice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Pokretanje MatchesActivity-a kada se pritisne gumb za utakmice
                 Intent intent = new Intent(MainActivity.this, MatchActivity.class);
                 startActivity(intent);
             }
         });
 
-        // Pronalaženje gumba za tablicu
         Button btnTablica = findViewById(R.id.btnTablica);
         btnTablica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Pokretanje StandingsActivity-a kada se pritisne gumb za tablicu
                 Intent intent = new Intent(MainActivity.this, StandingsActivity.class);
                 startActivity(intent);
             }
         });
 
-        // Pronalaženje gumba za "O nama"
         Button btnAbout = findViewById(R.id.btnAbout);
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Pokretanje AboutActivity-a kada se pritisne gumb za "O nama"
                 Intent intent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(intent);
             }

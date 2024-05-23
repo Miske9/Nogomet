@@ -50,7 +50,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.MyViewHolder
         holder.gost_klub_txt.setText(gost_klub.get(position));
         holder.rezultat_txt.setText(rezultat.get(position));
 
-        // RecyclerView onClickListener
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

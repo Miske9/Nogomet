@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayerActivity"
+    android:background="@color/white"
     android:padding="30dp">
 
     <EditText
@@ -14,7 +15,8 @@
         android:layout_marginTop="150dp"
         android:ems="10"
         android:hint="Ime"
-        android:inputType="textPersonName"
+        android:inputType="text"
+        android:textColor="@color/black"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +29,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Prezime"
-        android:inputType="textPersonName"
+        android:inputType="text"
+        android:textColor="@color/black"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +44,7 @@
         android:ems="10"
         android:hint="Godine"
         android:inputType="number"
+        android:textColor="@color/black"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +58,7 @@
         android:ems="10"
         android:hint="Pozicija"
         android:inputType="text"
+        android:textColor="@color/black"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

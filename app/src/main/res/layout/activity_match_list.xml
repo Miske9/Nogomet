@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MatchActivity">
 
     <EditText
@@ -12,7 +13,9 @@
         android:layout_marginTop="150dp"
         android:ems="10"
         android:hint="Domaci klub"
-        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:inputType="text"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +28,9 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Gost klub"
-        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:inputType="text"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +43,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="rezultat"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:inputType="number"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"

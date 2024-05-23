@@ -61,7 +61,6 @@ public class PlayerActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_home) {
                     Intent intent = new Intent(PlayerActivity.this, MainActivity.class);
                     startActivity(intent);
-                    // Handle other navigation items if needed
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

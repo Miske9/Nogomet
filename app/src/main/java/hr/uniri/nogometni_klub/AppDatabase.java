@@ -40,13 +40,14 @@ class AppDatabase extends SQLiteOpenHelper {
                 PLAYER_COLUMN_PREZIME + " TEXT, " +
                 PLAYER_COLUMN_GODINE + " INT, " +
                 PLAYER_COLUMN_POZICIJA + " TEXT);";
+        db.execSQL(query);
+
         String matchQuery = "CREATE TABLE " + MATCH_TABLE_NAME +
                 " (" + MATCH_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MATCH_COLUMN_DOMACI_KLUB + " TEXT, " +
                 MATCH_COLUMN_GOST_KLUB + " TEXT, " +
                 MATCH_COLUMN_REZULTAT + " INT);";
         db.execSQL(matchQuery);
-        db.execSQL(query);
     }
 
     @Override
@@ -67,7 +68,7 @@ class AppDatabase extends SQLiteOpenHelper {
         cv.put(PLAYER_COLUMN_IME, ime);
         cv.put(PLAYER_COLUMN_PREZIME, prezime);
         cv.put(PLAYER_COLUMN_GODINE, godine);
-        cv.put(PLAYER_COLUMN_POZICIJA, pozicija); // Ispravljena kolona
+        cv.put(PLAYER_COLUMN_POZICIJA, pozicija);
         long result = db.insert(PLAYER_TABLE_NAME, null, cv);
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
@@ -117,9 +118,9 @@ class AppDatabase extends SQLiteOpenHelper {
         cv.put(PLAYER_COLUMN_IME, ime);
         cv.put(PLAYER_COLUMN_PREZIME, prezime);
         cv.put(PLAYER_COLUMN_GODINE, godine);
-        cv.put(PLAYER_COLUMN_POZICIJA, pozicija); // Ispravljena kolona
+        cv.put(PLAYER_COLUMN_POZICIJA, pozicija);
 
-        long result = db.update(PLAYER_TABLE_NAME, cv, PLAYER_COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
+        long result = db.update(PLAYER_TABLE_NAME, cv, PLAYER_COLUMN_ID + "=?", new String[]{row_id});
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         } else {
@@ -133,7 +134,7 @@ class AppDatabase extends SQLiteOpenHelper {
         cv.put(MATCH_COLUMN_GOST_KLUB, gost_klub);
         cv.put(MATCH_COLUMN_REZULTAT, rezultat);
 
-        long result = db.update(MATCH_TABLE_NAME, cv, MATCH_COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
+        long result = db.update(MATCH_TABLE_NAME, cv, MATCH_COLUMN_ID + "=?", new String[]{row_id});
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         } else {
@@ -143,29 +144,33 @@ class AppDatabase extends SQLiteOpenHelper {
 
     void deleteOneRowFromPlayer(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(PLAYER_TABLE_NAME, PLAYER_COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
+        long result = db.delete(PLAYER_TABLE_NAME, PLAYER_COLUMN_ID + "=?", new String[]{row_id});
         if(result == -1){
             Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+            Cursor cursor = readAllPlayerData();
+            if (cursor.getCount() == 0) {
+                db.execSQL("DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + PLAYER_TABLE_NAME + "'");
+            } else {
+                db.execSQL("UPDATE " + PLAYER_TABLE_NAME + " SET " + PLAYER_COLUMN_ID + " = " + PLAYER_COLUMN_ID + " - 1 WHERE " + PLAYER_COLUMN_ID + " > " + row_id);
+            }
         }
     }
     void deleteOneRowFromMatch(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(MATCH_TABLE_NAME, MATCH_COLUMN_ID + "=?", new String[]{row_id}); // Koristi COLUMN_ID
+        long result = db.delete(MATCH_TABLE_NAME, MATCH_COLUMN_ID + "=?", new String[]{row_id});
         if(result == -1){
             Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+            Cursor cursor = readAllMatchData();
+            if (cursor.getCount() == 0) {
+                db.execSQL("DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + MATCH_TABLE_NAME + "'");
+            } else {
+                db.execSQL("UPDATE " + MATCH_TABLE_NAME + " SET " + MATCH_COLUMN_ID + " = " + MATCH_COLUMN_ID + " - 1 WHERE " + MATCH_COLUMN_ID + " > " + row_id);
+            }
         }
     }
 
-    void deleteAllPlayerData(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + PLAYER_TABLE_NAME);
-    }
-    void deleteAllMatchData(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + MATCH_TABLE_NAME);
-    }
 }

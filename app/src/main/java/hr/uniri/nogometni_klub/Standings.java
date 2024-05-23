@@ -8,5 +8,4 @@ public class Standings {
     public int id;
     public String team;
     public int points;
-    // Dodajte ostale potrebne atribute tablice
 }

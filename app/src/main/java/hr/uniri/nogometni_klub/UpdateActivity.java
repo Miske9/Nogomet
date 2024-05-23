@@ -31,10 +31,8 @@ public class UpdateActivity extends AppCompatActivity {
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
 
-        //First we call this
         getAndSetIntentData();
 
-        //Set actionbar title after getAndSetIntentData method
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setTitle(ime);
@@ -43,7 +41,6 @@ public class UpdateActivity extends AppCompatActivity {
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //And only then we call this
                 AppDatabase appDatabase = new AppDatabase(UpdateActivity.this);
                 ime = editIme.getText().toString().trim();
                 prezime = editPrezime.getText().toString().trim();
