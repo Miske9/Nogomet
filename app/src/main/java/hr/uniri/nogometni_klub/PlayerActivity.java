@@ -1,16 +1,20 @@
 package hr.uniri.nogometni_klub;
+
 import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -30,6 +35,8 @@ public class PlayerActivity extends AppCompatActivity {
     ImageView empty_imageview;
     TextView no_data;
 
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
     AppDatabase appDatabase;
     ArrayList<String> player_ID, ime_igraca, prezime_igraca, godine_igraca, pozicija_igraca;
     CustomAdapter customAdapter;
@@ -38,6 +45,31 @@ public class PlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
+
+        Toolbar toolbar = findViewById(R.id.toolbar_player);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawer_layout_player);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        );
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view_player);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.nav_home) {
+                    Intent intent = new Intent(PlayerActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    // Handle other navigation items if needed
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
 
         recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.add_button);
@@ -60,27 +92,26 @@ public class PlayerActivity extends AppCompatActivity {
 
         storeDataInArrays();
 
-        customAdapter = new CustomAdapter(PlayerActivity.this,this, player_ID, ime_igraca, prezime_igraca, godine_igraca, pozicija_igraca);
+        customAdapter = new CustomAdapter(PlayerActivity.this, this, player_ID, ime_igraca, prezime_igraca, godine_igraca, pozicija_igraca);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(PlayerActivity.this));
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
+        if (requestCode == 1) {
             recreate();
         }
     }
 
-    void storeDataInArrays(){
+    void storeDataInArrays() {
         Cursor cursor = appDatabase.readAllData();
-        if(cursor.getCount() == 0){
+        if (cursor.getCount() == 0) {
             empty_imageview.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
-        }else{
-            while (cursor.moveToNext()){
+        } else {
+            while (cursor.moveToNext()) {
                 player_ID.add(cursor.getString(0));
                 ime_igraca.add(cursor.getString(1));
                 prezime_igraca.add(cursor.getString(2));
@@ -100,34 +131,11 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.delete_all){
-            confirmDialog();
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
-        return super.onOptionsItemSelected(item);
-    }
-
-    void confirmDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete All?");
-        builder.setMessage("Are you sure you want to delete all Data?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                AppDatabase appDatabase = new AppDatabase(PlayerActivity.this);
-                appDatabase.deleteAllData();
-                //Refresh Activity
-                Intent intent = new Intent(PlayerActivity.this, PlayerActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.create().show();
     }
 }
