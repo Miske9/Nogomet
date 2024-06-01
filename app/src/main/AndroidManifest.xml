@@ -15,6 +15,8 @@
         <activity
             android:name=".UpdateActivity"
             android:exported="false" />
+        <activity android:name=".UpdateMatchActivity"
+            android:exported="false" />
         <activity
             android:name=".MatchListActivity"
             android:exported="false" />

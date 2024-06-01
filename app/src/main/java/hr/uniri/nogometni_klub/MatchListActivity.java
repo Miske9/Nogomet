@@ -31,7 +31,7 @@ public class MatchListActivity extends AppCompatActivity {
                 appDatabase.addMatch(
                         domaci_klub.getText().toString().trim(),
                         gost_klub.getText().toString().trim(),
-                        Integer.parseInt(rezultat.getText().toString().trim())
+                        rezultat.getText().toString().trim()
                 );
             }
         });

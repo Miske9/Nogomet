@@ -1,17 +1,14 @@
 package hr.uniri.nogometni_klub;
 
-import android.content.Intent;
-
-import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.contrib.DrawerActions;
-import androidx.test.espresso.contrib.NavigationViewActions;
 import androidx.test.espresso.intent.Intents;
+import androidx.test.espresso.intent.matcher.IntentMatchers;
+import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
-
-import com.google.android.material.navigation.NavigationView;
 
 import org.junit.After;
 import org.junit.Before;
@@ -26,10 +23,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
-public class End_to_End{
+public class EndToEnd{
 
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
+    @Rule
+    public ActivityScenarioRule<MatchActivity> matchRule = new ActivityScenarioRule<>(MatchActivity.class);
+    @Rule
+    public ActivityScenarioRule<MatchListActivity> matchListRule = new ActivityScenarioRule<>(MatchListActivity.class);
+
 
     @Before
     public void setup() {
@@ -65,7 +67,6 @@ public class End_to_End{
         // Verify that PlayerActivity is started
         intended(hasComponent(PlayerActivity.class.getName()));
     }
-
     @Test
     public void testButtonUtakmice() {
         // Click the 'Utakmice' button
@@ -84,5 +85,27 @@ public class End_to_End{
 
         // Verify that StandingsActivity is started
         intended(hasComponent(StandingsActivity.class.getName()));
+    }
+    @Test
+    public void testAddMatchButton() {
+        // Click the 'Add Match' button
+        Espresso.onView(withId(R.id.add_match_button))
+                .perform(ViewActions.click());
+
+        // Verify that MatchListActivity is started
+        intended(IntentMatchers.hasComponent(MatchListActivity.class.getName()));
+    }
+    @Test
+    public void testMatchList() {
+        // Match list test
+        Espresso.onView(ViewMatchers.withId(R.id.editDomaciKlub)).perform(ViewActions.replaceText("HomeTeam"));
+        Espresso.onView(ViewMatchers.withId(R.id.editGostKlub)).perform(ViewActions.replaceText("AwayTeam"));
+        Espresso.onView(ViewMatchers.withId(R.id.editRezultat)).perform(ViewActions.replaceText("2-1"));
+        Espresso.onView(ViewMatchers.withId(R.id.btnSpremiMatch)).perform(ViewActions.click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

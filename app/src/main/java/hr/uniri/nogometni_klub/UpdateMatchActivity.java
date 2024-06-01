@@ -44,7 +44,7 @@ public class UpdateMatchActivity extends AppCompatActivity {
                 domaci_klub = editDomaciKlub.getText().toString().trim();
                 gost_klub= editGostKlub.getText().toString().trim();
                 rezultat = editRezultat.getText().toString().trim();
-                appDatabase.updateMatchData(id, domaci_klub, gost_klub, Integer.parseInt(rezultat));
+                appDatabase.updateMatchData(id, domaci_klub, gost_klub, rezultat);
             }
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class UpdateMatchActivity extends AppCompatActivity {
             id = getIntent().getStringExtra("id");
             domaci_klub= getIntent().getStringExtra("domaci_klub");
             gost_klub = getIntent().getStringExtra("gost_klub");
-            rezultat = String.valueOf(Integer.parseInt(getIntent().getStringExtra("rezultat")));
+            rezultat = getIntent().getStringExtra("rezultat");
 
             //Setting Intent Data
             editDomaciKlub.setText(domaci_klub);

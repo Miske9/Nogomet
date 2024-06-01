@@ -53,7 +53,7 @@ class AppDatabase extends SQLiteOpenHelper {
                 " (" + MATCH_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MATCH_COLUMN_DOMACI_KLUB + " TEXT, " +
                 MATCH_COLUMN_GOST_KLUB + " TEXT, " +
-                MATCH_COLUMN_REZULTAT + " INT);";
+                MATCH_COLUMN_REZULTAT + " TEXT);";
         String standingsQuery = "CREATE TABLE " + STANDING_TABLE_NAME +
                 " (" + STANDING_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 STANDING_COLUMN_IME_KLUBA + " TEXT, " +
@@ -70,7 +70,7 @@ class AppDatabase extends SQLiteOpenHelper {
                     " (" + MATCH_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     MATCH_COLUMN_DOMACI_KLUB + " TEXT, " +
                     MATCH_COLUMN_GOST_KLUB + " TEXT, " +
-                    MATCH_COLUMN_REZULTAT + " INT);";
+                    MATCH_COLUMN_REZULTAT + " TEXT);";
             db.execSQL(matchQuery);
         }
         if (oldVersion < 3) {
@@ -97,7 +97,7 @@ class AppDatabase extends SQLiteOpenHelper {
             Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
         }
     }
-    void addMatch(String domaci_klub, String gost_klub, int rezultat){
+    void addMatch(String domaci_klub, String gost_klub, String rezultat){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -169,7 +169,7 @@ class AppDatabase extends SQLiteOpenHelper {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
     }
-    void updateMatchData(String row_id, String domaci_klub, String gost_klub, int rezultat){
+    void updateMatchData(String row_id, String domaci_klub, String gost_klub, String rezultat){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(MATCH_COLUMN_DOMACI_KLUB, domaci_klub);

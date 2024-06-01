@@ -55,7 +55,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.MyViewHolder
             public void onClick(View view) {
                 int currentPosition = holder.getAdapterPosition();
                 if (currentPosition != RecyclerView.NO_POSITION) {
-                    Intent intent = new Intent(context, UpdateActivity.class);
+                    Intent intent = new Intent(context, UpdateMatchActivity.class);
                     intent.putExtra("id", match_ID.get(currentPosition));
                     intent.putExtra("domacin", domaci_klub.get(currentPosition));
                     intent.putExtra("gost", gost_klub.get(currentPosition));
