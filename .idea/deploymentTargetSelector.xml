@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="medium2">
+      <SelectionState runConfigName="MediumTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Unit">
+      <SelectionState runConfigName="MediumTest2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Unit2">
+      <SelectionState runConfigName="UnitTest1">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Unit3">
+      <SelectionState runConfigName="UnitTest2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EndToEnd">
+      <SelectionState runConfigName="UnitTest3">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

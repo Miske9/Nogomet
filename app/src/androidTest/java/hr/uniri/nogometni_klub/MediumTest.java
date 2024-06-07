@@ -36,7 +36,7 @@ public class MediumTest {
 //    @Rule
 //    public ActivityScenarioRule<MatchListActivity> matchRule = new ActivityScenarioRule<>(MatchListActivity.class);
 //    @Test
-//    public void testMatchList() {
+//    public void testiranjeAzuriranjeUtakmica() {
 //        // Match list test
 //        Espresso.onView(ViewMatchers.withId(R.id.editDomaciKlub)).perform(ViewActions.replaceText("HomeTeam"));
 //        Espresso.onView(ViewMatchers.withId(R.id.editGostKlub)).perform(ViewActions.replaceText("AwayTeam"));
