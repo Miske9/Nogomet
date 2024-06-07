@@ -81,7 +81,7 @@ public class EndToEnd{
         intended(hasComponent(StandingsActivity.class.getName()));
     }
     @Test
-    public void testAddMatchButton() {
+    public void testiranjeNavigacijeDoEditiranjaUtakmice() {
         Espresso.onView(withId(R.id.btnUtakmice)).perform(ViewActions.click());
 
         Espresso.onView(withId(R.id.add_match_button))
@@ -91,7 +91,7 @@ public class EndToEnd{
         intended(IntentMatchers.hasComponent(MatchListActivity.class.getName()));
     }
     @Test
-    public void testMatchList() {
+    public void testiranjeNavigacijeIKreiranjeUtakmice() {
         Espresso.onView(ViewMatchers.withId(R.id.btnUtakmice)).perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.add_match_button)).perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.editDomaciKlub)).perform(ViewActions.replaceText("HomeTeam"));

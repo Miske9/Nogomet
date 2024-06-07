@@ -18,7 +18,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
-public class Unit {
+public class UnitTest1 {
 
     @Before
     public void setUp() {
@@ -26,12 +26,12 @@ public class Unit {
     }
 
     @Test
-    public void testAddButtonVisibility() {
+    public void testiranjeVidljivostiAddPlayerButtona() {
         onView(withId(R.id.add_player_button)).check(matches(isDisplayed()));
     }
 
     @Test
-    public void testAddButtonOpensPlayerListActivity() {
+    public void testiranjeNavigacijePomocuAddPlayerButtona() {
         onView(withId(R.id.add_player_button)).perform(click());
     }
 }

@@ -14,13 +14,13 @@ import org.junit.runner.RunWith;
 import android.util.Log;
 
 @RunWith(AndroidJUnit4.class)
-public class medium {
+public class MediumTest {
 
     @Rule
     public ActivityScenarioRule<PlayerListActivity> playerRule = new ActivityScenarioRule<>(PlayerListActivity.class);
 
     @Test
-    public void testPlayerList() {
+    public void testiranjeAzuriranjaIgraca() {
         Espresso.onView(ViewMatchers.withId(R.id.editIme))
                 .perform(ViewActions.replaceText("Matija"));
         Espresso.onView(ViewMatchers.withId(R.id.editPrezime))

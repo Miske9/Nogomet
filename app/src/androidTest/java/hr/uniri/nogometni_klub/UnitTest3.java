@@ -12,12 +12,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class Unit3 {
+public class UnitTest3 {
     @Rule
     public ActivityTestRule<MatchListActivity> rule = new ActivityTestRule<>(MatchListActivity.class);
 
     @Test
-    public void test() {
+    public void azuriranjeUtakmice() {
         Espresso.onView(ViewMatchers.withId(R.id.editDomaciKlub)).perform(ViewActions.replaceText("HomeTeam"));
         Espresso.onView(ViewMatchers.withId(R.id.editGostKlub)).perform(ViewActions.replaceText("AwayTeam"));
         Espresso.onView(ViewMatchers.withId(R.id.editRezultat)).perform(ViewActions.replaceText("2-1"));
