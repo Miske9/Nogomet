@@ -18,12 +18,10 @@ public class Unit3 {
 
     @Test
     public void test() {
-        // Type text into EditText fields
         Espresso.onView(ViewMatchers.withId(R.id.editDomaciKlub)).perform(ViewActions.replaceText("HomeTeam"));
         Espresso.onView(ViewMatchers.withId(R.id.editGostKlub)).perform(ViewActions.replaceText("AwayTeam"));
         Espresso.onView(ViewMatchers.withId(R.id.editRezultat)).perform(ViewActions.replaceText("2-1"));
 
-        // Click on the button
         Espresso.onView(ViewMatchers.withId(R.id.btnSpremiMatch)).perform(ViewActions.click());
     }
 }

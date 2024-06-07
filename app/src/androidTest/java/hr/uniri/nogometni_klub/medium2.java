@@ -46,45 +46,35 @@ public class medium2{
 
     @Test
     public void testNavigationDrawer() {
-        // Open the navigation drawer
         Espresso.onView(withId(R.id.drawer_layout))
                 .perform(DrawerActions.open());
 
-        // Check if the navigation view is displayed
         Espresso.onView(withId(R.id.nav_view))
                 .check(matches(isDisplayed()));
 
-        // Close the navigation drawer
         Espresso.onView(withId(R.id.drawer_layout))
                 .perform(DrawerActions.close());
     }
 
     @Test
     public void testButtonIgraci() {
-        // Click the 'Igraci' button
         Espresso.onView(withId(R.id.btnIgraci))
                 .perform(ViewActions.click());
 
-        // Verify that PlayerActivity is started
         intended(hasComponent(PlayerActivity.class.getName()));
     }
     @Test
     public void testButtonUtakmice() {
-        // Click the 'Utakmice' button
         Espresso.onView(withId(R.id.btnUtakmice))
                 .perform(ViewActions.click());
 
-        // Verify that MatchActivity is started
         intended(hasComponent(MatchActivity.class.getName()));
     }
 
     @Test
     public void testButtonTablica() {
-        // Click the 'Tablica' button
         Espresso.onView(withId(R.id.btnTablica))
                 .perform(ViewActions.click());
-
-        // Verify that StandingsActivity is started
         intended(hasComponent(StandingsActivity.class.getName()));
     }
 }

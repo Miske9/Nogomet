@@ -22,7 +22,6 @@ public class Unit2 {
         Espresso.onView(ViewMatchers.withId(R.id.editGodine)).perform(ViewActions.replaceText("25"));
         Espresso.onView(ViewMatchers.withId(R.id.editPozicija)).perform(ViewActions.replaceText("Napadac"));
 
-        // Click on the button
         Espresso.onView(ViewMatchers.withId(R.id.btnSpremi)).perform(ViewActions.click());
     }
 }
