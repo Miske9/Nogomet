@@ -94,8 +94,8 @@ public class EndToEnd{
     public void testiranjeNavigacijeIKreiranjeUtakmice() {
         Espresso.onView(ViewMatchers.withId(R.id.btnUtakmice)).perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.add_match_button)).perform(ViewActions.click());
-        Espresso.onView(ViewMatchers.withId(R.id.editDomaciKlub)).perform(ViewActions.replaceText("HomeTeam"));
-        Espresso.onView(ViewMatchers.withId(R.id.editGostKlub)).perform(ViewActions.replaceText("AwayTeam"));
+        Espresso.onView(ViewMatchers.withId(R.id.editDomaciKlub)).perform(ViewActions.replaceText("Domacini"));
+        Espresso.onView(ViewMatchers.withId(R.id.editGostKlub)).perform(ViewActions.replaceText("Gosti"));
         Espresso.onView(ViewMatchers.withId(R.id.editRezultat)).perform(ViewActions.replaceText("2-1"));
         Espresso.onView(ViewMatchers.withId(R.id.btnSpremiMatch)).perform(ViewActions.click());
     }

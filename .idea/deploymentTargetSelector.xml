@@ -11,13 +11,13 @@
       <SelectionState runConfigName="MediumTest2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="UnitTest1">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="UnitTest2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="UnitTest3">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="EndToEnd">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
