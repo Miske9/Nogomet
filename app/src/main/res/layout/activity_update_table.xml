@@ -6,51 +6,60 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/editTextTeam1"
+        android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Domaći tim"
+        android:hint="Ime Kluba"
         android:minHeight="48dp"
         android:padding="12dp"
         android:textSize="16sp"/>
 
     <EditText
-        android:id="@+id/editTextTeam2"
+        android:id="@+id/editTextWins"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Gostujući tim"
+        android:hint="Pobjede"
         android:minHeight="48dp"
         android:padding="12dp"
         android:textSize="16sp"/>
 
     <EditText
-        android:id="@+id/editTextHomeScore"
+        android:id="@+id/editTextDraws"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Domaći rezultat"
+        android:hint="Neriješeno"
         android:minHeight="48dp"
         android:padding="12dp"
         android:textSize="16sp"/>
 
     <EditText
-        android:id="@+id/editTextAwayScore"
+        android:id="@+id/editTextLosses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Gostujući rezultat"
+        android:hint="Porazi"
         android:minHeight="48dp"
         android:padding="12dp"
         android:textSize="16sp"/>
 
+    <EditText
+        android:id="@+id/editTextPoints"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bodovi"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"/>
 
     <Button
-        android:id="@+id/btnUpdateMatch"
+        android:id="@+id/btnUpdateTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ažuriraj utakmicu" />
+        android:text="Ažuriraj klub u tablici" />
 
     <Button
-        android:id="@+id/btnDeleteMatch"
+        android:id="@+id/btnDeleteTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Obriši utakmicu" />
+        android:text="Obriši klub iz tablice" />
+
 </LinearLayout>

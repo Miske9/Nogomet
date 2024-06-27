@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Home"/>
+        <item
+            android:id="@+id/nav_players"
+            android:icon="@drawable/baseline_igraci_24"
+            android:title="Igrači"/>
+        <item
+            android:id="@+id/nav_matches"
+            android:icon="@drawable/baseline_utakmice_24"
+            android:title="Utakmice"/>
+        <item
+            android:id="@+id/nav_table"
+            android:icon="@drawable/baseline_table_24"
+            android:title="Tablica"/>
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/baseline_about_24"
+            android:title="O nama"/>
+    </group>
+</menu>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ime Kluba"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextWins"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pobjede"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/editTextName"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextDraws"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Neriješeno"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/editTextWins"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextLosses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Porazi"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/editTextDraws"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextPoints"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bodovi"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/editTextLosses"
+        android:layout_margin="16dp"/>
+
+    <Button
+        android:id="@+id/buttonAddClub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dodaj klub" />
+
+</LinearLayout>

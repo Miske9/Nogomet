@@ -1,17 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-<style name="Base.Theme.Nogometni_klub" parent="Theme.Material3.DayNight.NoActionBar">
-    <item name="colorPrimary">@color/lavender</item>
-    <item name="colorPrimaryVariant">@color/lavender</item>
-    <item name="colorOnPrimary">@color/white</item>
-    <item name="colorSecondary">@color/teal_200</item>
-    <item name="colorSecondaryVariant">@color/teal_700</item>
-    <item name="colorOnSecondary">@color/black</item>
-    <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-    <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-</style>
-<style name="Theme.Nogometni_klub" parent="Base.Theme.Nogometni_klub" />
-<style name="DialogAnimation">
-    <item name="android:windowEnterAnimation">@anim/slide_in</item>
-    <item name="android:windowExitAnimation">@anim/slide_out</item>
-</style>
+    <!-- Base application theme. -->
+    <style name="Theme.UIDesign"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/yellow</item>
+        <item name="colorSecondaryVariant">@color/yellow</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="popupTheme">@color/blue</item>
+    </style>
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
 </resources>

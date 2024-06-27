@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    tools:context=".AddMatchActivity">
 
     <EditText
-        android:id="@+id/editTextTeam1"
+        android:id="@+id/editTextHomeTeam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Domaći tim"
         android:minHeight="48dp"
         android:padding="12dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_margin="16dp"/>
 
     <EditText
-        android:id="@+id/editTextTeam2"
+        android:id="@+id/editTextAwayTeam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Gostujući tim"
         android:minHeight="48dp"
         android:padding="12dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_below="@id/editTextHomeTeam"
+        android:layout_margin="16dp"/>
 
     <EditText
         android:id="@+id/editTextHomeScore"
@@ -30,8 +33,9 @@
         android:hint="Domaći rezultat"
         android:minHeight="48dp"
         android:padding="12dp"
-        android:textSize="16sp"/>
-
+        android:textSize="16sp"
+        android:layout_below="@id/editTextAwayTeam"
+        android:layout_margin="16dp"/>
     <EditText
         android:id="@+id/editTextAwayScore"
         android:layout_width="match_parent"
@@ -39,18 +43,17 @@
         android:hint="Gostujući rezultat"
         android:minHeight="48dp"
         android:padding="12dp"
-        android:textSize="16sp"/>
-
-
-    <Button
-        android:id="@+id/btnUpdateMatch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ažuriraj utakmicu" />
+        android:textSize="16sp"
+        android:layout_below="@id/editTextHomeScore"
+        android:layout_margin="16dp"/>
 
     <Button
-        android:id="@+id/btnDeleteMatch"
-        android:layout_width="match_parent"
+        android:id="@+id/buttonAddMatch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Obriši utakmicu" />
-</LinearLayout>
+        android:text="Dodaj Utakmicu"
+        android:layout_below="@id/editTextAwayScore"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"/>
+
+</RelativeLayout>

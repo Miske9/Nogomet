@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1079151815521",
+    "project_id": "football-smoljancisloboda",
+    "storage_bucket": "football-smoljancisloboda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079151815521:android:19acd9e1d54f8fa47b7320",
+        "android_client_info": {
+          "package_name": "hr.uniri.football"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkcDIdzrsFfAGoLucmba3JkwDtGMg0V9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

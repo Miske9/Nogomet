@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPlayerActivity">
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ime"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prezime"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/editTextName"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kategorija (veteran, senior, junior)"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/editTextSurname"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextPosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pozicija"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/editTextCategory"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Broj na dresu"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/editTextPosition"
+        android:layout_margin="16dp"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/btnDodajIgraca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodaj igrača"
+        android:layout_below="@id/editTextNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"/>
+
+</RelativeLayout>

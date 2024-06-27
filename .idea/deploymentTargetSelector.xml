@@ -5,20 +5,27 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MediumTest">
+      <SelectionState runConfigName="UnitTest1">
         <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="MediumTest2">
-        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-06-27T11:53:50.294489200Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\matij\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="UnitTest2">
         <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="UnitTest3">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="EndToEnd">
-        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-06-27T11:58:00.904512600Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\matij\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
     </selectionStates>
   </component>
