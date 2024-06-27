@@ -20,8 +20,8 @@ public class AddTableActivity extends AppCompatActivity {
 
         editTextName = findViewById(R.id.editTextName);
         editTextWins = findViewById(R.id.editTextWins);
-        editTextLosses = findViewById(R.id.editTextLosses);
         editTextDraws = findViewById(R.id.editTextDraws);
+        editTextLosses = findViewById(R.id.editTextLosses);
         editTextPoints = findViewById(R.id.editTextPoints);
         Button buttonAddClub = findViewById(R.id.buttonAddClub);
 
@@ -30,27 +30,27 @@ public class AddTableActivity extends AppCompatActivity {
         buttonAddClub.setOnClickListener(v -> {
             String name = editTextName.getText().toString().trim();
             String winsStr = editTextWins.getText().toString().trim();
-            String lossesStr = editTextLosses.getText().toString().trim();
             String drawsStr = editTextDraws.getText().toString().trim();
+            String lossesStr = editTextLosses.getText().toString().trim();
             String pointsStr = editTextPoints.getText().toString().trim();
 
-            if (name.isEmpty() || winsStr.isEmpty() || lossesStr.isEmpty() || drawsStr.isEmpty() || pointsStr.isEmpty()) {
+            if (name.isEmpty() || winsStr.isEmpty() || drawsStr.isEmpty() || lossesStr.isEmpty() || pointsStr.isEmpty()) {
                 Toast.makeText(AddTableActivity.this, "Molimo ispunite sva polja.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             int wins = Integer.parseInt(winsStr);
-            int losses = Integer.parseInt(lossesStr);
             int draws = Integer.parseInt(drawsStr);
+            int losses = Integer.parseInt(lossesStr);
             int points = Integer.parseInt(pointsStr);
 
-            addTable(name, wins, losses, draws, points);
+            addTable(name, wins, draws, losses, points);
         });
     }
 
-    private void addTable(String name, int wins, int losses, int draws, int points) {
+    private void addTable(String name, int wins, int draws, int losses, int points) {
         String id = db.collection("tables").document().getId();
-        Table table = new Table(id, name, wins, losses, draws, points);
+        Table table = new Table(id, name, wins, draws, losses, points);
 
         db.collection("tables").document(id).set(table)
                 .addOnSuccessListener(aVoid -> {

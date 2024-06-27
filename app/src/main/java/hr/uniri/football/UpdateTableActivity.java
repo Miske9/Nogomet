@@ -21,8 +21,8 @@ public class UpdateTableActivity extends AppCompatActivity {
 
         editTextName = findViewById(R.id.editTextName);
         editTextWins = findViewById(R.id.editTextWins);
-        editTextLosses = findViewById(R.id.editTextLosses);
         editTextDraws = findViewById(R.id.editTextDraws);
+        editTextLosses = findViewById(R.id.editTextLosses);
         editTextPoints = findViewById(R.id.editTextPoints);
         Button UpdateTable = findViewById(R.id.btnUpdateTable);
         Button DeleteTable = findViewById(R.id.btnDeleteTable);
@@ -44,8 +44,8 @@ public class UpdateTableActivity extends AppCompatActivity {
                         if (table != null) {
                             editTextName.setText(table.getName());
                             editTextWins.setText(String.valueOf(table.getWins()));
-                            editTextLosses.setText(String.valueOf(table.getLosses()));
                             editTextDraws.setText(String.valueOf(table.getDraws()));
+                            editTextLosses.setText(String.valueOf(table.getLosses()));
                             editTextPoints.setText(String.valueOf(table.getPoints()));
                         }
                     } else {
@@ -65,8 +65,8 @@ public class UpdateTableActivity extends AppCompatActivity {
         int wins, losses, draws, points;
         try {
             wins = Integer.parseInt(editTextWins.getText().toString().trim());
-            losses = Integer.parseInt(editTextLosses.getText().toString().trim());
             draws = Integer.parseInt(editTextDraws.getText().toString().trim());
+            losses = Integer.parseInt(editTextLosses.getText().toString().trim());
             points = Integer.parseInt(editTextPoints.getText().toString().trim());
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Unesite broj", Toast.LENGTH_SHORT).show();
