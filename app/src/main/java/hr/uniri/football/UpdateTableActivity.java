@@ -87,7 +87,7 @@ public class UpdateTableActivity extends AppCompatActivity {
     private void deleteTable() {
         db.collection("tables").document(tableId).delete()
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(UpdateTableActivity.this, "Table obrisana", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateTableActivity.this, "Tablica obrisana", Toast.LENGTH_SHORT).show();
                     finish();
                 })
                 .addOnFailureListener(e -> Toast.makeText(UpdateTableActivity.this, "Error kod brisanja tablice", Toast.LENGTH_SHORT).show());
