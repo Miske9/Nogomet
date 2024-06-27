@@ -45,8 +45,8 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
         TextView textViewPosition;
         TextView textViewName;
         TextView textViewWins;
-        TextView textViewLosses;
         TextView textViewDraws;
+        TextView textViewLosses;
         TextView textViewPoints;
 
         public ViewHolder(@NonNull View itemView) {
@@ -54,8 +54,8 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
             textViewPosition = itemView.findViewById(R.id.txtPosition);
             textViewName = itemView.findViewById(R.id.txtName);
             textViewWins = itemView.findViewById(R.id.txtWins);
-            textViewLosses = itemView.findViewById(R.id.txtLoses);
             textViewDraws = itemView.findViewById(R.id.txtDraws);
+            textViewLosses = itemView.findViewById(R.id.txtLoses);
             textViewPoints = itemView.findViewById(R.id.txtPoints);
         }
 
@@ -63,8 +63,8 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
             textViewPosition.setText(String.valueOf(position));
             textViewName.setText(table.getName());
             textViewWins.setText(String.valueOf(table.getWins()));
-            textViewLosses.setText(String.valueOf(table.getLosses()));
             textViewDraws.setText(String.valueOf(table.getDraws()));
+            textViewLosses.setText(String.valueOf(table.getLosses()));
             textViewPoints.setText(String.valueOf(table.getPoints()));
 
             itemView.setOnClickListener(v -> onItemClickListener.onItemClick(table));
