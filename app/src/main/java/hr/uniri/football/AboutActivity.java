@@ -16,9 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 public class AboutActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private EditText textViewTitle, textViewLocation, textViewMembers, textViewLeague;
+
     private DrawerLayout drawer;
-    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class AboutActivity extends AppCompatActivity implements NavigationView.O
         getSupportActionBar().setTitle("Smoljanci Sloboda");
 
         drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -38,7 +37,6 @@ public class AboutActivity extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        // Pronalaženje TextView elemenata iz layout-a
         TextView textViewTitle = findViewById(R.id.textViewTitle);
         TextView textViewLocation = findViewById(R.id.textViewLocation);
         TextView textViewMembers = findViewById(R.id.textViewMembers);

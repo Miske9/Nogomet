@@ -23,7 +23,7 @@ public class MatchesActivity extends AppCompatActivity implements NavigationView
     private RecyclerView recyclerView;
     private MatchAdapter matchAdapter;
     private FirebaseFirestore db;
-    private DrawerLayout drawerLayout;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +34,13 @@ public class MatchesActivity extends AppCompatActivity implements NavigationView
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Smoljanci Sloboda");
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
-        drawerLayout.addDrawerListener(toggle);
+                this, drawer, toolbar, R.string.open_nav, R.string.close_nav);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         recyclerView = findViewById(R.id.recyclerViewMatches);
@@ -80,8 +80,8 @@ public class MatchesActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -109,7 +109,7 @@ public class MatchesActivity extends AppCompatActivity implements NavigationView
             Intent intent = new Intent(MatchesActivity.this, AboutActivity.class);
             startActivity(intent);
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }

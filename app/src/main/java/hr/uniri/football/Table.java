@@ -3,14 +3,14 @@ public class Table {
     private String id;
     private String name;
     private int wins;
-    private int losses;
     private int draws;
+    private int losses;
     private int points;
 
     public Table() {
     }
 
-    public Table(String id, String name, int wins, int losses, int draws, int points) {
+    public Table(String id, String name, int wins, int draws, int losses, int points) {
         this.id = id;
         this.name = name;
         this.wins = wins;
@@ -40,16 +40,13 @@ public class Table {
         return wins;
     }
 
-
-    public int getLosses() {
-        return losses;
-    }
-
-
     public int getDraws() {
         return draws;
     }
 
+    public int getLosses() {
+        return losses;
+    }
 
     public int getPoints() {
         return points;

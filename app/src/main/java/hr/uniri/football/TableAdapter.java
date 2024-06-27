@@ -59,7 +59,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
             textViewPoints = itemView.findViewById(R.id.txtPoints);
         }
 
-        public void bind(Table table, int position, OnItemClickListener onItemClickListener) {
+        public void bind(@NonNull Table table, int position, OnItemClickListener onItemClickListener) {
             textViewPosition.setText(String.valueOf(position));
             textViewName.setText(table.getName());
             textViewWins.setText(String.valueOf(table.getWins()));

@@ -25,7 +25,7 @@ public class TableActivity extends AppCompatActivity implements NavigationView.O
     private RecyclerView recyclerView;
     private TableAdapter tableAdapter;
     private FirebaseFirestore db;
-    private DrawerLayout drawerLayout;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +36,13 @@ public class TableActivity extends AppCompatActivity implements NavigationView.O
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Smoljanci Sloboda");
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
-        drawerLayout.addDrawerListener(toggle);
+                this, drawer, toolbar, R.string.open_nav, R.string.close_nav);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         recyclerView = findViewById(R.id.recyclerViewTable);
@@ -66,7 +66,6 @@ public class TableActivity extends AppCompatActivity implements NavigationView.O
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         List<Table> tables = task.getResult().toObjects(Table.class);
-                        // Sort tables by points descending
                         Collections.sort(tables, (t1, t2) -> t2.getPoints() - t1.getPoints());
 
                         tableAdapter = new TableAdapter(tables, table -> {
@@ -75,7 +74,7 @@ public class TableActivity extends AppCompatActivity implements NavigationView.O
                             startActivity(intent);
                         });
 
-                        recyclerView.setAdapter(tableAdapter); // Postavljanje adaptera na RecyclerView
+                        recyclerView.setAdapter(tableAdapter);
                     } else {
                         Toast.makeText(TableActivity.this, "Error getting tables: " + task.getException(), Toast.LENGTH_SHORT).show();
                     }
@@ -85,8 +84,8 @@ public class TableActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -114,7 +113,7 @@ public class TableActivity extends AppCompatActivity implements NavigationView.O
             Intent intent = new Intent(TableActivity.this, AboutActivity.class);
             startActivity(intent);
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }
