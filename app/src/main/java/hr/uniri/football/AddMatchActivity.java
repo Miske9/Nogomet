@@ -21,11 +21,11 @@ public class AddMatchActivity extends AppCompatActivity {
         editTextAwayTeam = findViewById(R.id.editTextAwayTeam);
         editTextHomeScore = findViewById(R.id.editTextHomeScore);
         editTextAwayScore = findViewById(R.id.editTextAwayScore);
-        Button buttonAddMatch = findViewById(R.id.buttonAddMatch);
+        Button dodajUtakmicu = findViewById(R.id.btnDodajUtakmicu);
 
         db = FirebaseFirestore.getInstance();
 
-        buttonAddMatch.setOnClickListener(v -> {
+        dodajUtakmicu.setOnClickListener(v -> {
             String homeTeam = editTextHomeTeam.getText().toString().trim();
             String awayTeam = editTextAwayTeam.getText().toString().trim();
             String homeScore = editTextHomeScore.getText().toString().trim();

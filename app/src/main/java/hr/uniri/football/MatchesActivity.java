@@ -49,8 +49,8 @@ public class MatchesActivity extends AppCompatActivity implements NavigationView
         db = FirebaseFirestore.getInstance();
         fetchMatches();
 
-        Button dodajUtakmicu = findViewById(R.id.btnDodajUtakmicu);
-        dodajUtakmicu.setOnClickListener(v -> startActivity(new Intent(MatchesActivity.this, AddMatchActivity.class)));
+        Button dodajUtakmice = findViewById(R.id.btnDodajUtakmice);
+        dodajUtakmice.setOnClickListener(v -> startActivity(new Intent(MatchesActivity.this, AddMatchActivity.class)));
     }
 
     @Override
